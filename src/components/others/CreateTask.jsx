@@ -10,31 +10,39 @@ const CreateTask = () => {
   const [assignTo, setAssignTo] = useState('')
   const [category, setCategory] = useState('')
   const [taskDescription, setTaskDescription] = useState('')
-  const [newtask, setNewTask] = useState({})
+  //const [newtask, setNewTask] = useState({})
   
   const submitHandler = (e) => {
     e.preventDefault();
     //console.log("task assigned!");
-    setNewTask({
+    const new_task = {
       active: false, newTask: true, completed: false, failed: false,
       taskTitle, taskDescription, taskDate, category
-    })
+    }
 
-    const data = userData
-    data.forEach((elem) => {
-      if(elem.name == assignTo){
-        elem.tasks.push(newtask)
-        elem.taskCount.newTask = elem.taskCount.newTask + 1
+    const updatedData = [...userData]
+    updatedData.forEach((elem) => {
+      if(elem.name === assignTo) {
+
+        // Make sure tasks array exists
+        if (!elem.tasks) elem.tasks = [];
+        // Make sure taskCount exists and has newTask property
+        if (!elem.taskCount) elem.taskCount = { newTask: 0 };
+
+        elem.tasks.push(new_task);
+        elem.taskCount.newTask = (elem.taskCount.newTask || 0) + 1;
       }
-    })
-    setUserData(data)
-    console.log(data);
+    });
+
+    setUserData(updatedData)
+    console.log(userData);
 
     setTaskTitle('')
     setTaskDate('')
     setAssignTo('')
     setCategory('')
     setTaskDescription('')
+    setAssignTo('')
   };
 
   return (
