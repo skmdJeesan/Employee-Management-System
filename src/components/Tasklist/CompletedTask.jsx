@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CompleteTask = ({task}) => {
+const CompletedTask = ({task}) => {
   return (
     <div className="h-[90%] w-[300px] bg-violet-400 rounded-xl flex-shrink-0 p-5 relative">
       <div className="flex items-center justify-between">
@@ -12,10 +12,10 @@ const CompleteTask = ({task}) => {
       </h1>
       <p className="text-base leading-[1.1]">{task.taskDescription}</p>
       <div className="absolute bottom-5 w-[85%]">
-        <button className='bg-green-500 w-full py-2 rounded text-xs'>Completed</button>
+        <button className='bg-green-500 w-full py-2 rounded text-xs cursor-pointer active:scale-95 transition-transform'>Completed</button>
       </div>
     </div>
   )
 }
 
-export default CompleteTask
+export default CompletedTask

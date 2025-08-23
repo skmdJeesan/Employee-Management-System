@@ -1,6 +1,6 @@
 import React from "react";
 
-const AcceptTask = ({task}) => {
+const AcceptedTask = ({task}) => {
   return (
     <div className="h-[90%] w-[300px] bg-violet-400 rounded-xl flex-shrink-0 p-5 relative">
       <div className="flex items-center justify-between">
@@ -12,11 +12,11 @@ const AcceptTask = ({task}) => {
       </h1>
       <p className="text-base leading-[1.1]">{task.taskDescription}</p>
       <div className="flex gap-7 absolute bottom-5">
-        <button className="bg-green-500 py-2 px-3 rounded text-xs">Mark as Completed</button>
-        <button className="bg-red-500 py-2 px-3 rounded text-xs">Mark as Failed</button>
+        <button className="bg-green-500 py-2 px-3 rounded text-xs cursor-pointer active:scale-95 transition-transform">Mark as Completed</button>
+        <button className="bg-red-500 py-2 px-3 rounded text-xs cursor-pointer active:scale-95 transition-transform">Mark as Failed</button>
       </div>
     </div>
   );
 };
 
-export default AcceptTask;
+export default AcceptedTask;
