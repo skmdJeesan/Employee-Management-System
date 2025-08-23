@@ -2,47 +2,64 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 
 const CreateTask = () => {
+  const [userData, setUserData] = useContext(AuthContext);
 
-  const [userData, setUserData] = useContext(AuthContext)
-
-  const [taskTitle, setTaskTitle] = useState('')
-  const [taskDate, setTaskDate] = useState('')
-  const [assignTo, setAssignTo] = useState('')
-  const [category, setCategory] = useState('')
-  const [taskDescription, setTaskDescription] = useState('')
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDate, setTaskDate] = useState("");
+  const [assignTo, setAssignTo] = useState("");
+  const [category, setCategory] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
   //const [newtask, setNewTask] = useState({})
-  
+
   const submitHandler = (e) => {
     e.preventDefault();
     //console.log("task assigned!");
     const new_task = {
-      active: false, newTask: true, completed: false, failed: false,
-      taskTitle, taskDescription, taskDate, category
-    }
+      active: false,
+      newTask: true,
+      completed: false,
+      failed: false,
+      taskTitle,
+      taskDescription,
+      taskDate,
+      category,
+    };
 
-    const updatedData = [...userData]
-    updatedData.forEach((elem) => {
-      if(elem.name === assignTo) {
+    // Update user data with the new task
+    const updatedData = userData.map((employee) => {
+      if (employee.name === assignTo) {
+        // Ensure tasks array exists
+        const tasks = employee.tasks || [];
 
-        // Make sure tasks array exists
-        if (!elem.tasks) elem.tasks = [];
-        // Make sure taskCount exists and has newTask property
-        if (!elem.taskCount) elem.taskCount = { newTask: 0 };
+        // Ensure taskCount exists
+        const taskCount = employee.taskCount || {
+          newTask: 0,
+          accepted: 0,
+          completed: 0,
+          failed: 0,
+        };
 
-        elem.tasks.push(new_task);
-        elem.taskCount.newTask = (elem.taskCount.newTask || 0) + 1;
+        return {
+          ...employee,
+          tasks: [...tasks, new_task],
+          taskCount: {
+            ...taskCount,
+            newTask: (taskCount.newTask || 0) + 1,
+          },
+        };
       }
+      return employee;
     });
 
-    setUserData(updatedData)
+    setUserData(updatedData);
     console.log(userData);
 
-    setTaskTitle('')
-    setTaskDate('')
-    setAssignTo('')
-    setCategory('')
-    setTaskDescription('')
-    setAssignTo('')
+    setTaskTitle("");
+    setTaskDate("");
+    setAssignTo("");
+    setCategory("");
+    setTaskDescription("");
+    setAssignTo("");
   };
 
   return (
@@ -105,7 +122,10 @@ const CreateTask = () => {
               onChange={(e) => setTaskDescription(e.target.value)}
               required
               className="w-full outline-none rounded-xl border-1 border-gray-400 py-1 px-2 text-md"
-              name="" id="" cols="30" rows="7"
+              name=""
+              id=""
+              cols="30"
+              rows="7"
             ></textarea>
           </div>
           <button className="w-full rounded-xl py-3 bg-emerald-400 text-center active:scale-95 transition-transform cursor-pointer">

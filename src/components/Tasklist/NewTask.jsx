@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context/AuthProvider'
 
 const NewTask = ({task}) => {
+  //const [userData, setUserData] = useContext(AuthContext)
   return (
     <div className="h-[90%] w-[300px] bg-violet-400 rounded-xl flex-shrink-0 p-5 relative">
       <div className="flex items-center justify-between">
@@ -12,7 +14,11 @@ const NewTask = ({task}) => {
       </h1>
       <p className="text-base leading-[1.1]">{task.taskDescription}</p>
       <div className="absolute bottom-5 w-[85%]">
-        <button className='bg-blue-500 w-full py-2 rounded text-xs'>Accept</button>
+        <button 
+          onClick={(e) => {}}
+          className='bg-blue-500 w-full py-2 rounded text-xs cursor-pointer active:scale-95 transition-transform'>
+          Accept
+        </button>
       </div>
     </div>
   )
