@@ -62,22 +62,12 @@ const TaskList = ({ data }) => {
   };
 
   return (
-    <div
-      id="taskList"
-      className="flex items-center gap-5 h-[55%] mt-10 overflow-x-auto"
-    >
+    <div id="taskList" className="flex items-center gap-5 h-[55%] mt-10 overflow-x-auto">
       {tasks.map((elem) => {
         // use a stable key like elem.id if available; fallback to title
         const key = elem.id || elem.taskTitle;
         if (elem.active)
-          return (
-            <AcceptedTask
-              key={key}
-              task={elem}
-              onComplete={handleCompleteTask}
-              onFail={handleFailTask}
-            />
-          );
+          return <AcceptedTask key={key} task={elem} onComplete={handleCompleteTask} onFail={handleFailTask} />
         if (elem.completed) return <CompletedTask key={key} task={elem} />;
         if (elem.failed) return <FailedTask key={key} task={elem} />;
         // newTask or fallback
