@@ -12,7 +12,7 @@ const FailedTask = ({task}) => {
       </h1>
       <p className="text-base leading-[1.1]">{task.taskDescription}</p>
       <div className="absolute bottom-5 w-[85%]">
-        <button className='bg-red-500 w-full py-2 rounded text-xs cursor-pointer'>Failed</button>
+        <button className='bg-red-500 w-full py-2 rounded text-xs cursor-pointer'>Failed ✗</button>
       </div>
     </div>
   )

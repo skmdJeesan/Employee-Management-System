@@ -12,7 +12,7 @@ const CompletedTask = ({task}) => {
       </h1>
       <p className="text-base leading-[1.1]">{task.taskDescription}</p>
       <div className="absolute bottom-5 w-[85%]">
-        <button className='bg-green-500 w-full py-2 rounded text-xs'>Completed</button>
+        <button className='bg-green-500 w-full py-2 rounded text-xs'>Completed ✓</button>
       </div>
     </div>
   )

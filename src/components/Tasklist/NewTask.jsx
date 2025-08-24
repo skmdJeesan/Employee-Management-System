@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../../context/AuthProvider'
 
-const NewTask = ({task}) => {
+const NewTask = ({task, onAccept}) => {
   //const [userData, setUserData] = useContext(AuthContext)
   return (
     <div className="h-[90%] w-[300px] bg-violet-400 rounded-xl flex-shrink-0 p-5 relative">
@@ -15,7 +15,7 @@ const NewTask = ({task}) => {
       <p className="text-base leading-[1.1]">{task.taskDescription}</p>
       <div className="absolute bottom-5 w-[85%]">
         <button 
-          onClick={(e) => {}}
+          onClick={() => {onAccept(task)}}
           className='bg-blue-500 w-full py-2 rounded text-xs cursor-pointer active:scale-95 transition-transform'>
           Accept
         </button>
