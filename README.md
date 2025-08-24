@@ -6,8 +6,8 @@ Lightweight React app (no backend) for assigning and viewing employee tasks—us
 
 ## Live Preview & Repo
 
-* **Live demo:** `REPLACE_WITH_LIVE_DEMO_URL`
-* **Repository:** `https://github.com/skmdJeesan/Employee-Management-System`
+* **Live demo:** [Live Demo](https://skmdjeesan.github.io/Employee-Management-System/)
+* **Repository:** [Repository](https://github.com/skmdJeesan/Employee-Management-System)
 
 ---
 
@@ -43,7 +43,6 @@ npm start
 1. Log in as Admin to add employees and assign tasks.
 2. Log in as Employee to view tasks assigned to them.
 
-
 ---
 
 ## Notes
@@ -52,4 +51,3 @@ npm start
 * For real multi-user support, replace `localStorage` with a backend (API + DB).
 
 ---
-
